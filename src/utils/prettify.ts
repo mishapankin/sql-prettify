@@ -40,7 +40,7 @@ function prettify(str: string): string {
 
 function parse(str: string): insert[] {
     const PREFIX = "INSERT\\s+INTO\\s+";
-    const NAME = "([a-zA-Z0-9_]+)\\s*";
+    const NAME = "([a-zA-Z0-9_.]+)\\s*";
     const SIGNATURE = "\\(([^)]+)\\)\\s+";
     const VALUES = "VALUES\\s+";
     const VALUES_LIST = "\\(([^)]+)\\)";

@@ -8,12 +8,13 @@ import prettify from './utils/prettify';
 
 function App() {
   const [code, setCode] = useState(
-    `INSERT INTO users (name, email, password) VALUES ('John', 'john@doe.com', '123456');\n` + 
-    `INSERT INTO users (name, email, password) VALUES ('John', 'john@doe.com', '123456');`
+    `INSERT INTO users.users (name, email, password) VALUES ('John', 'john@doe.com', '123456');\n` + 
+    `INSERT INTO users.users (name, email, password) VALUES ('Kate', 'kate@long-email.com', 'qwerty');`
   );
   return (
     <div className="App">
       <Editor
+        className="editor"
         value={code}
         onValueChange={code => setCode(code)}
         highlight={code => highlight(code, languages.sql, "sql")}
@@ -27,6 +28,7 @@ function App() {
         }}
       />
       <Editor
+        className="editor"
         value={prettify(code)}
         onValueChange={_ => {}}
         highlight={code => highlight(code, languages.sql, "sql")}
