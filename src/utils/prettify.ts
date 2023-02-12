@@ -11,14 +11,14 @@ function gen_row(row: string[], lengths: number[]): string {
     return row.map((cell, i) => gen_cell(cell, i)).join("");
 }
 
-function gen_table(inserts: insert[]): string {
+function gen_table(inserts: insert[], min_space: number): string {
     const header = inserts[0].header;
     const values = inserts.map(insert => insert.values);
 
     const combine = [header, ...values];
 
     const lengths = header.map(
-        (_, i) => combine.map(row => row[i].length + 5).reduce((a, b) => Math.max(a, b))
+        (_, i) => Math.max(...combine.map(row => row[i].length + min_space))
     );
     
 
@@ -29,13 +29,12 @@ function gen_table(inserts: insert[]): string {
     return `INSERT INTO ${inserts[0].name}\n\t(${gen_row(header, lengths)})\nVALUES\n${table};`;
 }
 
-function prettify(str: string): string {
+function prettify(str: string, min_space: number = 3): string {
     const matches = parse(str);
-    console.log(matches);
 
     if (matches.length === 0) { return str; }
 
-    return gen_table(matches);
+    return gen_table(matches, min_space);
 }
 
 function parse(str: string): insert[] {
