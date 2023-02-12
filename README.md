@@ -1,4 +1,5 @@
 # sql-prettify
-Prettifier for sql
+Утилита для объединения нескольких вставок на sql в одну и форматироварования их по столбцам.
 
-[link](https://mishapankin.github.io/sql-prettify/)
+[Ссылка](https://mishapankin.github.io/sql-prettify/)
+
